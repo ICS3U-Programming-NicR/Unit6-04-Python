@@ -29,19 +29,21 @@ def main():
     print("Please enter 1 mark at a time. Enter -1 to end." "\n")
 
     # input
-    while single_mark != "-1":
-        single_mark = input("What is your mark? (as %): ")
+    while True:
+
         try:
-            int_single_mark = int(single_mark)
-
-            mark_list.append(int_single_mark)
-        except Exception:
+            single_mark = int(input("What is your mark? (as %): "))
+            if single_mark != -1:
+                mark_list.append(single_mark)
+            else:
+                break
+        except:
             print("Please enter in a number")
-
-    mark_list.pop()
-
-    # call functions
-    average = average_calculator(mark_list)
+    if len(mark_list) == 0:
+        average = -1
+    else:
+        # call functions
+        average = average_calculator(mark_list)
     # output
     print("Your average is: {}% ".format(average))
 
